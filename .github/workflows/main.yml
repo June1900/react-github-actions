@@ -9,20 +9,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - name: Checkout
+    - name:  Checkout 🛎️
       uses: actions/checkout@main
 
-    - name: Build and Deploy
+    - name: Install and Build 🔧 
+      run: |
+        npm install
+        npm run build      
+
+    - name: Deploy 🚀
       uses: June-tech/react-github-actions@main
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: build # The folder the action should deploy.
+    # - name: Build and Deploy
+    #   uses: June-tech/react-github-actions@main
+    #   env:
+    #     # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    #     BRANCH: gh-pages
+    #     FOLDER: build
+    #     BUILD_SCRIPT: npm install && npm run build
