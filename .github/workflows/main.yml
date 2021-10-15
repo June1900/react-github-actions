@@ -10,8 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name:  Checkout 🛎️
-      uses: actions/checkout@main
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
 
     - name: Install and Build 🔧 
       run: |
@@ -19,7 +21,7 @@ jobs:
         npm run build      
 
     - name: Deploy 🚀
-      uses: June-tech/react-github-actions@main
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: build # The folder the action should deploy.
