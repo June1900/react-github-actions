@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@main
 
     - name: Build and Deploy
-      uses: June-tech/react-github-actions@master
+      uses: June-tech/react-github-actions@main
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
